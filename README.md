@@ -2,17 +2,12 @@
 
 This doesn't do that much other than:
 
-*   install open source `puppetdb` locally 
-*   install the default db, `postgresql`
+*   install open source `puppetdb` locally - in other words do a `puppet apply` (aka masterless puppet) to install puppetdb
+*   install the default db, `postgresql` - this is implicitly set from puppetlabs/puppetdb (http://forge.puppetlabs.com/puppetlabs/puppetdb)
 
-You probably want a puppetmaster to use this, so you should have something like: 
+This does NOT install a puppetmaster. For that, you want to add something like this: 
 
     class { 'puppetdb::master::config':
       puppetdb_server => 'my.puppetdb.host.name',
       puppetdb_port   => 8081,
     }
-
-Read up on the PuppetForge docs for more info: 
-http://forge.puppetlabs.com/puppetlabs/puppetdb
-
-
